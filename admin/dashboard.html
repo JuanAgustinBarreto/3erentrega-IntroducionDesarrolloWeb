@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración de Veterinaria Laika - Métrica general y accesos rápidos.">
+  <title>Admin - Panel Principal | Veterinaria Laika</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg admin-navbar py-2">
+      <div class="container">
+        
+        <a href="dashboard.html" class="logo me-lg-4">
+          <div class="logo-circulo-crop">
+            <img src="../assets/images/logo1.png" alt="Logo Veterinaria Laika" class="logo-img-zoom">
+          </div>
+          <span>Laika Admin</span>
+        </a>
+
+        <button class="navbar-toggler admin-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbarMenu" aria-controls="adminNavbarMenu" aria-expanded="false" aria-label="Abrir navegación">
+          <span class="admin-toggler-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="adminNavbarMenu">
+          <div class="admin-nav-wrapper">
+            <ul class="navbar-nav gap-1 gap-lg-2 mb-3 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link admin-nav-item active" href="dashboard.html">
+                  <span class="nav-icon">📊</span> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link admin-nav-item" href="mascotas.html">
+                  <span class="nav-icon">🐶</span> Mascotas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link admin-nav-item" href="veterinarios.html">
+                  <span class="nav-icon">🩺</span> Veterinarios
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link admin-nav-item" href="turnos.html">
+                  <span class="nav-icon">📅</span> Turnos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link admin-nav-item" href="historias.html">
+                  <span class="nav-icon">📋</span> Historia Clínica
+                </a>
+              </li>
+            </ul>
+
+            <div class="admin-nav-actions d-flex flex-column flex-lg-row gap-2">
+              <button class="btn btn-outline-secondary btn-sm px-3 py-2" id="btn-modo-oscuro" type="button">
+                🌙 Modo Oscuro
+              </button>
+              <a href="../index.html" class="boton boton-secundario text-decoration-none py-2 px-3 text-center d-inline-flex align-items-center justify-content-center gap-2">
+                <span>🌐</span> Ver Sitio Web
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h2 class="mb-4" style="font-family: var(--font-titulos); color: var(--color-principal-oscuro);">Panel de Control</h2>
+
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="tarjeta-admin p-4 text-center">
+          <span class="fs-1" aria-hidden="true">🐶</span>
+          <h3 id="stat-mascotas" class="fs-2 my-2 fw-bold" style="color: var(--color-principal-oscuro);">0</h3>
+          <p class="text-secondary mb-0">Mascotas Registradas</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="tarjeta-admin p-4 text-center">
+          <span class="fs-1" aria-hidden="true">🩺</span>
+          <h3 id="stat-vets" class="fs-2 my-2 fw-bold" style="color: var(--color-principal-oscuro);">0</h3>
+          <p class="text-secondary mb-0">Veterinarios Activos</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="tarjeta-admin p-4 text-center">
+          <span class="fs-1" aria-hidden="true">📅</span>
+          <h3 id="stat-turnos" class="fs-2 my-2 fw-bold" style="color: var(--color-principal-oscuro);">0</h3>
+          <p class="text-secondary mb-0">Turnos Agendados</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="tarjeta-admin p-4 text-center">
+          <span class="fs-1" aria-hidden="true">📋</span>
+          <h3 id="stat-historias" class="fs-2 my-2 fw-bold" style="color: var(--color-principal-oscuro);">0</h3>
+          <p class="text-secondary mb-0">Atenciones Realizadas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barras de Progreso -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm p-4" style="border-radius: 1rem;">
+          <h5 class="mb-3 text-secondary">Estadísticas Rápidas (Dinámicas)</h5>
+          
+          <!-- Barra 1: Son los turnos -->
+          <label id="label-turnos" class="form-label text-muted small">Turnos Agendados (0%)</label>
+          <div class="progress mb-3" style="height: 10px; border-radius: 5px;">
+            <div id="bar-turnos" class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <!-- Barra 2: Cupo de Mascotas -->
+          <label id="label-mascotas" class="form-label text-muted small">Ocupación de Cupo de Mascotas (0%)</label>
+          <div class="progress mb-3" style="height: 10px; border-radius: 5px;">
+            <div id="bar-mascotas" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <!-- Barra 3: Atención registrada -->
+          <label id="label-historias" class="form-label text-muted small">Atenciones Registradas (0%)</label>
+          <div class="progress" style="height: 10px; border-radius: 5px;">
+            <div id="bar-historias" class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      const mascotas = getStorage(KEY_MASCOTAS);
+      const vets = getStorage(KEY_VETERINARIOS);
+      const turnos = getStorage(KEY_TURNOS);
+      const historias = getStorage(KEY_HISTORIAS);
+
+     
+      document.getElementById('stat-mascotas').innerText = mascotas.length;
+      document.getElementById('stat-vets').innerText = vets.length;
+      document.getElementById('stat-turnos').innerText = turnos.length;
+      document.getElementById('stat-historias').innerText = historias.length;
+
+      const maxTurnosEsperados = 10; // 10 turnos como el 100%
+      const maxMascotasEsperadas = 10; // 10 mascotas como el 100%
+      const maxHistoriasEsperadas = 10; // 10 atenciones como el 100%
+
+      const porcentajeTurnos = Math.min(Math.round((turnos.length / maxTurnosEsperados) * 100), 100);
+      const porcentajeMascotas = Math.min(Math.round((mascotas.length / maxMascotasEsperadas) * 100), 100);
+      const porcentajeHistorias = Math.min(Math.round((historias.length / maxHistoriasEsperadas) * 100), 100);
+
+
+      document.getElementById('label-turnos').innerText = `Turnos Agendados (${porcentajeTurnos}%)`;
+      const barraTurnos = document.getElementById('bar-turnos');
+      barraTurnos.style.width = porcentajeTurnos + '%';
+      barraTurnos.setAttribute('aria-valuenow', porcentajeTurnos);
+
+      document.getElementById('label-mascotas').innerText = `Ocupación de Cupo de Mascotas (${porcentajeMascotas}%)`;
+      const barraMascotas = document.getElementById('bar-mascotas');
+      barraMascotas.style.width = porcentajeMascotas + '%';
+      barraMascotas.setAttribute('aria-valuenow', porcentajeMascotas);
+
+      document.getElementById('label-historias').innerText = `Atenciones Registradas (${porcentajeHistorias}%)`;
+      const barraHistorias = document.getElementById('bar-historias');
+      barraHistorias.style.width = porcentajeHistorias + '%';
+      barraHistorias.setAttribute('aria-valuenow', porcentajeHistorias);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Header & Navbar del Panel de Administración (Estética y Responsivo)
+   ========================================================================== */
+
+/* Navbar principal */
+.admin-navbar {
+    background-color: var(--color-bg-tarjeta);
+    border-bottom: 1px solid var(--color-borde-general);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+/* Botón Hamburguesa Personalizado (Solución 100% visible sin fallas) */
+.admin-toggler {
+    border: 1.5px solid var(--color-borde-general) !important;
+    padding: 0.5rem 0.65rem !important;
+    border-radius: 10px !important;
+    background-color: var(--color-bg-pagina);
+    transition: all 0.2s ease;
+}
+
+.admin-toggler:focus {
+    box-shadow: 0 0 0 3px var(--color-principal-suave) !important;
+    border-color: var(--color-principal-marca) !important;
+}
+
+/* Icono de 3 líneas con CSS puro */
+.admin-toggler-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22px;
+    height: 16px;
+}
+
+.admin-toggler-icon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-principal-oscuro);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+/* Enlaces de Navegación */
+.admin-nav-item {
+    font-family: var(--font-titulos);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text-secundario) !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.admin-nav-item:hover {
+    color: var(--color-principal-marca) !important;
+    background-color: var(--color-principal-suave);
+}
+
+.admin-nav-item.active {
+    background-color: var(--color-principal-suave);
+    color: var(--color-principal-oscuro) !important;
+    font-weight: 700;
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+}
+
+/* Estilos de Tarjeta para el Menú desplegado en Celulares (< 992px) */
+@media (max-width: 991.98px) {
+    .admin-nav-wrapper {
+        background-color: var(--color-bg-pagina);
+        border: 1px solid var(--color-borde-general);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-top: 0.75rem;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .admin-nav-item {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .admin-nav-actions {
+        border-top: 1px solid var(--color-borde-general);
+        padding-top: 0.8rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Alineación Horizontal limpia en Computadoras (>= 992px) */
+@media (min-width: 992px) {
+    .admin-nav-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Tarjetas, Tablas y Formularios del Panel
+   ========================================================================== */
+
+.tarjeta-admin {
+    background-color: var(--color-bg-tarjeta);
+    border-radius: 14px;
+    border: 1px solid var(--color-borde-general);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.img-mascota-tabla {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde-general);
+}
+
+.badge-especialidad {
+    background-color: var(--color-principal-suave);
+    color: var(--color-principal-oscuro);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Adaptabilidad para botones de acciones en celdas de tabla */
+@media (max-width: 575.98px) {
+    .tarjeta-admin {
+        padding: 1rem !important;
+    }
+    
+    .acciones-contenedor {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .acciones-contenedor .btn {
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+@media (min-width: 576px) {
+    .acciones-contenedor {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.35rem;
+    }
+}
